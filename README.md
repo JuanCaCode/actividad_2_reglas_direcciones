@@ -15,9 +15,10 @@ Crear un programa sencillo en Python, que funciona desde la terminal, en el que 
 
 El conocimiento está escrito en `main.py`, separado del algoritmo que lo usa:
 
-- `lugares`: los 7 lugares, numerados del 1 al 7 para el menú.
+- Variables de los lugares (`CASA`, `MINIMARKET`, `BIBLIOTECA`, `ESTADIO`, `UNIVERSIDAD`, `OFICINA` y `RESTAURANTE`): cada nombre se escribe una sola vez y el resto del código usa la variable. Si un lugar cambia de nombre, solo se modifica su variable (y, si hace falta, el texto de sus indicaciones).
+- `lugares`: el menú, que relaciona cada número del 1 al 7 con su lugar.
 - `conexiones`: diccionario con los lugares conectados directamente con cada lugar (los **hechos**).
-- `indicaciones`: las **reglas de dirección**. La clave es una tupla `(desde, hasta)` y el valor es la indicación de ese tramo. Por ejemplo: *si* se va de Mi casa a Biblioteca, *entonces* "Sal de Mi casa, gira a la izquierda y avanza dos cuadras por la Carrera 2."
+- `indicaciones`: las **reglas de dirección**. La clave es una tupla `(desde, hasta)`, por ejemplo `(CASA, BIBLIOTECA)`, y el valor es la indicación de ese tramo. Por ejemplo: *si* se va de Mi casa a Biblioteca, *entonces* "Sal de Mi casa, gira a la izquierda y avanza dos cuadras por la Carrera 2."
 
 Hay 8 conexiones de doble sentido, por eso hay 16 reglas de dirección (una para cada sentido):
 
@@ -117,5 +118,3 @@ Número de lugares: 4
 
 Gracias por usar el sistema.
 ```
-
-Los casos de prueba están documentados en [docs/pruebas.md](docs/pruebas.md).

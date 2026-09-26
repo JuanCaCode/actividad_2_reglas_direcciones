@@ -1,45 +1,54 @@
 # Sistema Inteligente de Rutas - Actividad 2 de Inteligencia Artificial
 
-# Lugares disponibles (número de opción: nombre del lugar)
+# Nombres de los lugares (se definen una sola vez)
+CASA = "Mi casa"
+MINIMARKET = "Minimarket del barrio"
+BIBLIOTECA = "Biblioteca"
+ESTADIO = "Estadio de fútbol"
+UNIVERSIDAD = "Universidad"
+OFICINA = "Oficina de trabajo"
+RESTAURANTE = "Restaurante"
+
+# Lugares disponibles (número de opción: lugar)
 lugares = {
-    "1": "Mi casa",
-    "2": "Minimarket del barrio",
-    "3": "Biblioteca",
-    "4": "Estadio de fútbol",
-    "5": "Universidad",
-    "6": "Oficina de trabajo",
-    "7": "Restaurante",
+    "1": CASA,
+    "2": MINIMARKET,
+    "3": BIBLIOTECA,
+    "4": ESTADIO,
+    "5": UNIVERSIDAD,
+    "6": OFICINA,
+    "7": RESTAURANTE,
 }
 
 # Base de conocimiento: conexiones entre los lugares
 conexiones = {
-    "Mi casa": ["Minimarket del barrio", "Biblioteca"],
-    "Minimarket del barrio": ["Mi casa", "Biblioteca", "Estadio de fútbol"],
-    "Biblioteca": ["Mi casa", "Minimarket del barrio", "Universidad"],
-    "Estadio de fútbol": ["Minimarket del barrio", "Restaurante"],
-    "Universidad": ["Biblioteca", "Oficina de trabajo"],
-    "Oficina de trabajo": ["Universidad", "Restaurante"],
-    "Restaurante": ["Estadio de fútbol", "Oficina de trabajo"],
+    CASA: [MINIMARKET, BIBLIOTECA],
+    MINIMARKET: [CASA, BIBLIOTECA, ESTADIO],
+    BIBLIOTECA: [CASA, MINIMARKET, UNIVERSIDAD],
+    ESTADIO: [MINIMARKET, RESTAURANTE],
+    UNIVERSIDAD: [BIBLIOTECA, OFICINA],
+    OFICINA: [UNIVERSIDAD, RESTAURANTE],
+    RESTAURANTE: [ESTADIO, OFICINA],
 }
 
 # Reglas de dirección: (desde, hasta) -> indicación
 indicaciones = {
-    ("Mi casa", "Minimarket del barrio"): "Sal de Mi casa, gira a la derecha y avanza una cuadra por la Calle 1.",
-    ("Minimarket del barrio", "Mi casa"): "Sal del Minimarket, gira a la izquierda y regresa una cuadra por la Calle 1.",
-    ("Mi casa", "Biblioteca"): "Sal de Mi casa, gira a la izquierda y avanza dos cuadras por la Carrera 2.",
-    ("Biblioteca", "Mi casa"): "Sal de la Biblioteca y avanza dos cuadras por la Carrera 2.",
-    ("Minimarket del barrio", "Biblioteca"): "Sigue derecho dos cuadras y gira a la izquierda.",
-    ("Biblioteca", "Minimarket del barrio"): "Gira a la derecha y avanza dos cuadras.",
-    ("Minimarket del barrio", "Estadio de fútbol"): "Toma la Calle del Parque y avanza tres cuadras hasta el Estadio.",
-    ("Estadio de fútbol", "Minimarket del barrio"): "Toma la Calle del Parque y avanza tres cuadras hasta el Minimarket.",
-    ("Biblioteca", "Universidad"): "Continúa por la Avenida Central tres cuadras hasta la Universidad.",
-    ("Universidad", "Biblioteca"): "Toma la Avenida Central y avanza tres cuadras hasta la Biblioteca.",
-    ("Universidad", "Oficina de trabajo"): "Sal de la Universidad, gira a la derecha y avanza dos cuadras.",
-    ("Oficina de trabajo", "Universidad"): "Sal de la Oficina, gira a la izquierda y avanza dos cuadras.",
-    ("Oficina de trabajo", "Restaurante"): "Continúa una cuadra por la Calle 8 y gira a la izquierda.",
-    ("Restaurante", "Oficina de trabajo"): "Sal del Restaurante, gira a la derecha y avanza una cuadra por la Calle 8.",
-    ("Estadio de fútbol", "Restaurante"): "Rodea el Estadio por el costado oriental y avanza dos cuadras.",
-    ("Restaurante", "Estadio de fútbol"): "Desde el Restaurante avanza dos cuadras hacia el Estadio.",
+    (CASA, MINIMARKET): "Sal de Mi casa, gira a la derecha y avanza una cuadra por la Calle 1.",
+    (MINIMARKET, CASA): "Sal del Minimarket, gira a la izquierda y regresa una cuadra por la Calle 1.",
+    (CASA, BIBLIOTECA): "Sal de Mi casa, gira a la izquierda y avanza dos cuadras por la Carrera 2.",
+    (BIBLIOTECA, CASA): "Sal de la Biblioteca y avanza dos cuadras por la Carrera 2.",
+    (MINIMARKET, BIBLIOTECA): "Sigue derecho dos cuadras y gira a la izquierda.",
+    (BIBLIOTECA, MINIMARKET): "Gira a la derecha y avanza dos cuadras.",
+    (MINIMARKET, ESTADIO): "Toma la Calle del Parque y avanza tres cuadras hasta el Estadio.",
+    (ESTADIO, MINIMARKET): "Toma la Calle del Parque y avanza tres cuadras hasta el Minimarket.",
+    (BIBLIOTECA, UNIVERSIDAD): "Continúa por la Avenida Central tres cuadras hasta la Universidad.",
+    (UNIVERSIDAD, BIBLIOTECA): "Toma la Avenida Central y avanza tres cuadras hasta la Biblioteca.",
+    (UNIVERSIDAD, OFICINA): "Sal de la Universidad, gira a la derecha y avanza dos cuadras.",
+    (OFICINA, UNIVERSIDAD): "Sal de la Oficina, gira a la izquierda y avanza dos cuadras.",
+    (OFICINA, RESTAURANTE): "Continúa una cuadra por la Calle 8 y gira a la izquierda.",
+    (RESTAURANTE, OFICINA): "Sal del Restaurante, gira a la derecha y avanza una cuadra por la Calle 8.",
+    (ESTADIO, RESTAURANTE): "Rodea el Estadio por el costado oriental y avanza dos cuadras.",
+    (RESTAURANTE, ESTADIO): "Desde el Restaurante avanza dos cuadras hacia el Estadio.",
 }
 
 # Mostrar los lugares disponibles
